@@ -18,10 +18,11 @@ app.use(express.urlencoded({ extended: true })); // support encoded bodies
 // Conectar a la base de datos
 // console.log('validando rutas', usersRouter);
 
-mongoose.connect('mongodb://localhost:27017/usuariosDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  'mongodb+srv://krmanriquesanchez_db_user:12345@cluster0.rec25r6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
 
 
 // Usar las rutas de autenticación
