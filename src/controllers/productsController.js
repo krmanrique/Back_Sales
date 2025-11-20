@@ -84,6 +84,24 @@ class productsController {
         res.status(500).send(e);
     }
   }
+
+  async getExternalProducts(req, res) {
+    try {
+      const response = await fetch('https://fakestoreapi.com/products');
+      console.log(response)
+
+      const data = await response.json()
+      const externalProducts = data.map(product => ({
+        name: product.title,
+        price: product.price,
+        imageUrl: product.image,
+      }));
+      res.status(201).json(externalProducts);
+    } catch (error) {
+      console.error('Error al obtener productos externos:', error);
+      res.status(500).json({ error: 'Error al obtener productos externos' });
+    }
+  }
 };
 
 module.exports = new productsController();
